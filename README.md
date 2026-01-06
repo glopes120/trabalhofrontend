@@ -1,6 +1,6 @@
 # 🛍️ Frontend React - Loja Online (E-commerce)
 
-Este projeto consiste numa aplicação Frontend em React que simula uma loja online, desenvolvida no âmbito da disciplina de Desenvolvimento Web[cite: 1, 3].
+Este projeto consiste numa aplicação Frontend em React que simula uma loja online, desenvolvida no âmbito da disciplina de Desenvolvimento Web.
 A aplicação consome a API pública **FakeStoreAPI** e cumpre todos os requisitos obrigatórios de gestão de estado, rotas e persistência de dados.
 
 ---
