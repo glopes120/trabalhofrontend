@@ -8,7 +8,7 @@ A aplicação consome a API pública **FakeStoreAPI** e cumpre todos os requisit
 ## 👥 Autores
 **Grupo de Trabalho:**
 * **Aluno 1:** Guilherme Lopes - [a046723]
-* **Aluno 2:** [Nome Completo] - [a047527]
+* **Aluno 2:** Vasco Ye - [a047527]
   
 
 ---
