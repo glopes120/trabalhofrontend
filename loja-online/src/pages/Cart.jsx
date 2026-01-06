@@ -6,14 +6,14 @@ import './Cart.css'; // O CSS do layout "VIP"
 
 /**
  * Cart Page
- * Responsável por gerir a encomenda final.
- * Inclui layout profissional, feedback visual (toasts) e redirecionamento.
+ * Responsible for managing the final order.
+ * Includes professional layout, visual feedback (toasts), and redirection.
  */
 const Cart = () => {
-  // Hook para navegação programática (redirecionar após clique)
+  // Hook for programmatic navigation (redirect after click)
   const navigate = useNavigate();
 
-  // Consumimos o contexto global do carrinho
+  // We consume the global cart context
   const { 
     cart, 
     removeFromCart, 
@@ -23,52 +23,52 @@ const Cart = () => {
     cartCount
   } = useCart();
 
-  // --- RENDERIZAÇÃO: ESTADO VAZIO ---
+  // --- RENDERING: EMPTY STATE ---
   if (cart.length === 0) {
     return (
       <div className="cart-container">
         <div className="empty-state">
-          <h2 className="empty-title">O seu carrinho está vazio 🛒</h2>
+          <h2 className="empty-title">Your cart is empty 🛒</h2>
           <p style={{ marginBottom: '2rem', color: '#64748b' }}>
-            Ainda não escolheu os seus produtos favoritos?
+            Haven't chosen your favorite products yet?
           </p>
           <Link to="/" className="back-btn">
-            Voltar à Loja
+            Back to Store
           </Link>
         </div>
       </div>
     );
   }
 
-  // --- RENDERIZAÇÃO: CARRINHO COM ITENS ---
+  // --- RENDERING: CART WITH ITEMS ---
   return (
     <div className="cart-container">
-      <h1 className="cart-title">Carrinho de Compras</h1>
+      <h1 className="cart-title">Shopping Cart</h1>
 
       <div className="cart-content">
         
-        {/* --- COLUNA DA ESQUERDA: LISTA DE PRODUTOS --- */}
+        {/* --- LEFT COLUMN: PRODUCT LIST --- */}
         <div className="cart-items">
           {cart.map((item) => (
             <div key={item.id} className="cart-item">
               
-              {/* Imagem do Produto */}
+              {/* Product Image */}
               <img src={item.image} alt={item.title} className="item-image" />
               
-              {/* Título e Preço Unitário */}
+              {/* Title and Unit Price */}
               <div className="item-details">
                 <h3 className="item-title">{item.title}</h3>
-                <p className="item-price-unit">Unid: {item.price.toFixed(2)} €</p>
+                <p className="item-price-unit">Unit: {item.price.toFixed(2)} €</p>
               </div>
 
-              {/* Controlos de Quantidade e Remover */}
+              {/* Quantity Controls and Remove */}
               <div className="item-controls">
                 
-                {/* Botões + e - */}
+                {/* + and - Buttons */}
                 <div className="quantity-wrapper">
                   <button 
                     className="qty-btn"
-                    disabled={item.quantity <= 1} // Desativa se for 1
+                    disabled={item.quantity <= 1} // Disables if it's 1
                     onClick={() => updateQuantity(item.id, item.quantity - 1)}
                   >
                     -
@@ -84,43 +84,43 @@ const Cart = () => {
                   </button>
                 </div>
 
-                {/* Preço Total deste Item (Qtd * Preço) */}
+                {/* Total Price for this Item (Qty * Price) */}
                 <div className="item-total">
                   {(item.price * item.quantity).toFixed(2)} €
                 </div>
 
-                {/* Botão Remover com Notificação Toast */}
+                {/* Remove Button with Toast Notification */}
                 <button 
                   className="remove-btn"
                   onClick={() => {
                     removeFromCart(item.id);
-                    // Feedback visual
-                    toast.error('Item removido', {
+                    // Visual feedback
+                    toast.error('Item removed', {
                       position: 'bottom-right',
                       style: { background: '#333', color: '#fff' }
                     });
                   }}
-                  title="Remover do carrinho"
+                  title="Remove from cart"
                 >
-                  Remover
+                  Remove
                 </button>
               </div>
             </div>
           ))}
         </div>
 
-        {/* --- COLUNA DA DIREITA: RESUMO DO PEDIDO (Sticky) --- */}
+        {/* --- RIGHT COLUMN: ORDER SUMMARY (Sticky) --- */}
         <div className="cart-summary">
-          <h2 className="summary-title">Resumo do Pedido</h2>
+          <h2 className="summary-title">Order Summary</h2>
           
           <div className="summary-row">
-            <span>Itens ({cartCount})</span>
+            <span>Items ({cartCount})</span>
             <span>{cartTotal.toFixed(2)} €</span>
           </div>
           
           <div className="summary-row">
-            <span>Envio</span>
-            <span style={{ color: '#10b981', fontWeight: 'bold' }}>Grátis</span>
+            <span>Shipping</span>
+            <span style={{ color: '#10b981', fontWeight: 'bold' }}>Free</span>
           </div>
 
           <div className="summary-row total">
@@ -128,25 +128,25 @@ const Cart = () => {
             <span>{cartTotal.toFixed(2)} €</span>
           </div>
 
-          {/* Botão de Checkout -> Leva para a página de Sucesso */}
+          {/* Checkout Button -> Takes to Success Page */}
           <button 
             className="checkout-btn"
             onClick={() => {
               navigate('/checkout-success');
             }}
           >
-            Finalizar Compra
+            Complete Purchase
           </button>
 
-          {/* Botão de Limpar Carrinho */}
+          {/* Clear Cart Button */}
           <button 
             className="clear-cart-btn"
             onClick={() => {
               clearCart();
-              toast('Carrinho esvaziado', { icon: '🗑️' });
+              toast('Cart emptied', { icon: '🗑️' });
             }}
           >
-            Esvaziar Carrinho
+            Empty Cart
           </button>
         </div>
 

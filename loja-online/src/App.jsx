@@ -1,24 +1,24 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast'; // Importar a biblioteca de notificações
+import { Toaster } from 'react-hot-toast'; // Import the notification library
 import Navbar from './components/Navbar';
 
-// Importação das Páginas
+// Import Pages
 import Home from './pages/Home';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
-import CheckoutSuccess from './pages/CheckoutSuccess'; // Importar a nova página de sucesso
+import CheckoutSuccess from './pages/CheckoutSuccess'; // Import the new success page
 
 /**
  * App Component
- * Configuração principal das rotas e das notificações globais.
+ * Main configuration of routes and global notifications.
  */
 function App() {
   return (
     <div>
-      {/* Configuração do Toaster (Notificações VIP).
-        Colocamos aqui para que esteja disponível em toda a app.
-        Definimos um estilo escuro para contrastar com o design clean.
+      {/* Toaster Configuration (VIP Notifications).
+        Placed here to be available throughout the app.
+        Defined a dark style to contrast with the clean design.
       */}
       <Toaster 
         position="top-center" 
@@ -32,25 +32,25 @@ function App() {
         }}
       />
 
-      {/* A Navbar fica fora das Routes para aparecer em todas as páginas */}
+      {/* The Navbar is outside Routes to appear on all pages */}
       <Navbar />
 
-      {/* Contentor principal com margens (definido no index.css) */}
+      {/* Main container with margins (defined in index.css) */}
       <div className="app-container">
         <Routes>
-          {/* Rota para a Página Inicial (Lista de Produtos) */}
+          {/* Route for Home Page (Product List) */}
           <Route path="/" element={<Home />} />
 
-          {/* Rota para Detalhes do Produto (ID dinâmico) */}
+          {/* Route for Product Details (Dynamic ID) */}
           <Route path="/product/:id" element={<ProductDetail />} />
 
-          {/* Rota para o Carrinho de Compras */}
+          {/* Route for Shopping Cart */}
           <Route path="/cart" element={<Cart />} />
           
-          {/* Rota para a Página de Sucesso (Confetis) */}
+          {/* Route for Success Page (Confetti) */}
           <Route path="/checkout-success" element={<CheckoutSuccess />} />
           
-          {/* Rota de Fallback: Se o URL for inválido, volta à Home */}
+          {/* Fallback Route: If URL is invalid, go back to Home */}
           <Route path="*" element={<Home />} />
         </Routes>
       </div>

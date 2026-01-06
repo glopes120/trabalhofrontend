@@ -7,19 +7,19 @@ import './ProductDetail.css'; // Importação do novo CSS
 
 /**
  * ProductDetail Page
- * Versão atualizada com design system (CSS classes).
- * Mantém a lógica de fetch, tratamento de erros e contexto.
+ * Updated version with design system (CSS classes).
+ * Maintains fetch logic, error handling, and context.
  */
 const ProductDetail = () => {
   const { id } = useParams();
   const { addToCart } = useCart();
 
-  // Estados locais
+  // Local states
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Efeito para buscar dados do produto
+  // Effect to fetch product data
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -28,8 +28,8 @@ const ProductDetail = () => {
         setProduct(data);
         setError(null);
       } catch (err) {
-        console.error("Erro ao carregar detalhes:", err);
-        setError("Não foi possível carregar o produto. Verifique a sua conexão.");
+        console.error("Error loading details:", err);
+        setError("Could not load the product. Check your connection.");
       } finally {
         setLoading(false);
       }
@@ -40,12 +40,12 @@ const ProductDetail = () => {
     }
   }, [id]);
 
-  // Handler para adicionar ao carrinho
+  // Handler to add to cart
 const handleAddToCart = () => {
   if (product) {
     addToCart(product);
-    // Em vez de alert(), usamos isto:
-    toast.success(`Adicionado: ${product.title}`, {
+    // Instead of alert(), we use this:
+    toast.success(`Added: ${product.title}`, {
       style: {
         border: '1px solid #10b981',
         padding: '16px',
@@ -61,22 +61,22 @@ const handleAddToCart = () => {
 };
 
   
-  // --- RENDERIZAÇÃO: ERRO ---
+  // --- RENDERING: ERROR ---
   if (error || !product) {
     return (
       <div className="error-container">
         <h2 style={{ color: '#ef4444', marginBottom: '1rem' }}>
-          {error || "Produto não encontrado"}
+          {error || "Product not found"}
         </h2>
-        <Link to="/" className="back-link">Voltar à Loja</Link>
+        <Link to="/" className="back-link">Back to Store</Link>
       </div>
     );
   }
 
-  // --- RENDERIZAÇÃO: PRINCIPAL ---
+  // --- RENDERING: MAIN ---
   return (
     <div className="detail-container">
-      {/* Coluna da Esquerda: Imagem */}
+      {/* Left Column: Image */}
       <div className="detail-image-wrapper">
         <img 
           src={product.image} 
@@ -85,7 +85,7 @@ const handleAddToCart = () => {
         />
       </div>
 
-      {/* Coluna da Direita: Informações */}
+      {/* Right Column: Information */}
       <div className="detail-info">
         <span className="detail-category">{product.category}</span>
         
@@ -103,7 +103,7 @@ const handleAddToCart = () => {
           className="add-to-cart-btn" 
           onClick={handleAddToCart}
         >
-          Adicionar ao Carrinho
+          Add to Cart
         </button>
       </div>
     </div>

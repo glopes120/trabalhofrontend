@@ -7,27 +7,27 @@ import './CheckoutSuccess.css'; // Já vamos criar este CSS
 const CheckoutSuccess = () => {
   const { clearCart } = useCart();
 
-  // useEffect executa assim que a página abre
+  // useEffect executes as soon as the page opens
   useEffect(() => {
-    // Limpar o carrinho porque a compra foi "realizada"
+    // Clear the cart because the purchase was "completed"
     clearCart();
-  }, []); // [] garante que só corre uma vez
+  }, []); // [] ensures it only runs once
 
-  // Gera um número de encomenda aleatório para parecer real
+  // Generates a random order number to seem real
   const orderNumber = Math.floor(Math.random() * 1000000);
 
   return (
     <div className="success-container">
-      {/* Animação de confetis a cair */}
+      {/* Falling confetti animation */}
       <Confetti 
         width={window.innerWidth} 
         height={window.innerHeight} 
-        recycle={false} // Pára de cair após alguns segundos
+        recycle={false} // Stops falling after a few seconds
         numberOfPieces={500}
       />
 
       <div className="success-card">
-        {/* Ícone de Visto Verde (SVG) */}
+        {/* Green Checkmark SVG */}
         <div className="checkmark-wrapper">
           <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
             <circle className="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
@@ -35,19 +35,19 @@ const CheckoutSuccess = () => {
           </svg>
         </div>
 
-        <h1 className="success-title">Pagamento Confirmado!</h1>
+        <h1 className="success-title">Payment Confirmed!</h1>
         
         <p className="success-message">
-          Obrigado pela sua compra. O seu pedido está a ser processado.
+          Thank you for your purchase. Your order is being processed.
         </p>
 
         <div className="order-info">
-          <span>Nº do Pedido:</span>
+          <span>Order No.:</span>
           <span className="order-id">#{orderNumber}</span>
         </div>
 
         <Link to="/" className="back-home-btn">
-          Continuar a Comprar
+          Continue Shopping
         </Link>
       </div>
     </div>
