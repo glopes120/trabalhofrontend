@@ -1,0 +1,75 @@
+/* src/index.css */
+
+:root {
+  /* --- COLOR PALETTE (Theme: Clean & Professional) --- */
+  --primary-color: #0f172a;       /* Deep Dark Blue (Navbar, Strong Texts) */
+  --accent-color: #10b981;        /* Emerald Green (Prices, Action Buttons) */
+  --accent-hover: #059669;        /* Darker green for hover */
+  --bg-color: #f8fafc;            /* Very light gray for the background */
+  --card-bg: #ffffff;             /* Pure white for cards */
+  --text-primary: #1e293b;        /* Dark gray for reading */
+  --text-secondary: #64748b;      /* Medium gray for details */
+  
+  /* --- UI ELEMENTS --- */
+  --radius: 12px;                 /* Modern rounded corners */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+  --shadow-hover: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* Basic reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings */
+h1, h2, h3 {
+  color: var(--primary-color);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Global Buttons (Default style) */
+button {
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+/* Main App Container */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Style for inputs and selects (Filters) */
+input, select {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus, select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1);
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
